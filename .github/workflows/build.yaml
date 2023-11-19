@@ -13,6 +13,8 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
+      - name: Install Build Dependencies
+        run: sudo apt-get update && sudo apt-get install pkg-config libssl-dev
       - name: Install cargo lambda
         run: |
           python -m pip install --upgrade pip
