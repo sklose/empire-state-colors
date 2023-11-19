@@ -21,3 +21,7 @@ jobs:
       - name: Build lambda function
         run: cargo lambda build --release --arm64
         shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: bootstrap
+          path: target/lambda/empire-state-colors/bootstrap
