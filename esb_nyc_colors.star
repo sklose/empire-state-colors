@@ -41,30 +41,37 @@ def main():
     }
 
     return render.Root(
-        child = render.Column(
-            expanded = True,
-            main_align = "space_around",
-            cross_align = "center",
+        delay = 100,
+        child = render.Stack(
             children = [
-                render.Marquee(
-                    width = 128,
-                    child = render.Text(
-                        content = description,
-                        font = "Dina_r400-6",
-                    ),
-                ),
-                render.Box(
-                    color = colorMap[color1],
-                    child = render.Box(
-                        width = 40,
-                        height = 16,
-                        color = colorMap[color2],
-                        child = render.Box(
-                            width = 20,
-                            height = 8,
-                            color = colorMap[color3],
+                render.Row(
+                    children = [
+                        render.Column(
+                            cross_align = "center",
+                            children = [
+                                render.Box(width = 2, height = 12, color = colorMap[color1]),
+                                render.Box(width = 4, height = 2, color = colorMap[color1]),
+                                render.Box(width = 12, height = 12, color = colorMap[color2]),
+                                render.Box(width = 14, height = 6, color = colorMap[color3]),
+                            ],
                         ),
-                    ),
+                        render.Column(
+                            children = [
+                                render.Padding(
+                                    pad = (1, 0, 0, 0),
+                                    child = render.Marquee(
+                                        height = 32,
+                                        scroll_direction = "vertical",
+                                        child = render.WrappedText(
+                                            content = description,
+                                            width = 50,
+                                            font = "tom-thumb",
+                                        ),
+                                    ),
+                                ),
+                            ],
+                        ),
+                    ],
                 ),
             ],
         ),
