@@ -23,7 +23,7 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
     let description = root.find(".is-today .field_description p").text();
 
     let color_regex =
-        RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red)")
+        RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red|teal)")
             .case_insensitive(true)
             .build()
             .unwrap();
