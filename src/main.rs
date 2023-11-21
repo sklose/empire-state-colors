@@ -21,7 +21,7 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
     let root = Vis::load(&body).unwrap();
     let color_text = root.find(".is-today h3").text();
     let mut description = root.find(".is-today .field_description p").text();
-    if description.len() == 0 {
+    if description.is_empty() {
         description = root.find(".is-today .info h3").text();
     }
 

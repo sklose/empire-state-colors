@@ -4,26 +4,19 @@ version = "0.1.0"
 edition = "2021"
 authors = [ "Sebastian Klose" ]
 
-# Starting in Rust 1.62 you can use `cargo add` to add dependencies 
-# to your project.
-#
-# If you're using an older Rust version,
-# download cargo-edit(https://github.com/killercup/cargo-edit#installation) 
-# to install the `add` subcommand.
-#
-# Running `cargo add DEPENDENCY_NAME` will
-# add the latest version of a dependency to the list,
-# and it will keep the alphabetic ordering for you.
-
 [dependencies]
-lambda_http = "0.8.3"
-lambda_runtime = "0.8.3"
+lambda_http = "0.8"
+lambda_runtime = "0.8"
 tokio = { version = "1", features = ["macros"] }
 tracing = { version = "0.1", features = ["log"] }
 tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt"] }
-reqwest = { version = "0.11.22", features = ["json"] }
-visdom = "1.0.0"
+reqwest = { version = "0.11", features = ["json"] }
+visdom = "1.0"
 regex = "1.10"
 serde = "1"
 serde_json = "1"
+
+# see https://github.com/sfackler/rust-openssl/issues/2092
+# using 'vendored' build on OSX + Linux solves the issue
+[target.'cfg(not(windows))'.dependencies]
 openssl = { version = "0.10", features = [ "vendored" ] }
