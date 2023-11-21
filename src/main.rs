@@ -20,7 +20,10 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
 
     let root = Vis::load(&body).unwrap();
     let color_text = root.find(".is-today h3").text();
-    let description = root.find(".is-today .field_description p").text();
+    let mut description = root.find(".is-today .field_description p").text();
+    if description.len() == 0 {
+        description = "Signature White";
+    }
 
     let color_regex =
         RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red|teal)")
