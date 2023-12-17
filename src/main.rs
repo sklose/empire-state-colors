@@ -14,11 +14,10 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
     let resp = client
         .get("https://www.esbnyc.com/about/tower-lights")
         .send()
-        .await
-        .unwrap();
-    let body = resp.text().await.unwrap();
+        .await?;
+    let body = resp.text().await?;
 
-    let root = Vis::load(&body).unwrap();
+    let root = Vis::load(&body)?;
     let color_text = root.find(".is-today h3").text();
     let mut description = root.find(".is-today .field_description p").text();
     if description.is_empty() {
@@ -28,8 +27,7 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
     let color_regex =
         RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red|teal)")
             .case_insensitive(true)
-            .build()
-            .unwrap();
+            .build()?;
 
     let colors: Vec<_> = color_regex
         .find_iter(&color_text)
