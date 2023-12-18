@@ -25,7 +25,7 @@ async fn function_handler(_: Request) -> Result<Response<Body>, Error> {
     }
 
     let color_regex =
-        RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red|teal)")
+        RegexBuilder::new("(green|white|blue|yellow|purple|pink|orange|brown|gold|red|teal|burgundy)")
             .case_insensitive(true)
             .build()?;
 
